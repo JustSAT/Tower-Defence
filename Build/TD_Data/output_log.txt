@@ -25,7 +25,7 @@ Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.
 Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
 Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll (this message is harmless)
 Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll into Unity Child Domain
-- Completed reload, in  0.051 seconds
+- Completed reload, in  0.060 seconds
 desktop: 1280x1024 60Hz; virtual: 1280x1024 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -37,4 +37,76 @@ Received pong from 192.168.0.102:25000
 Received pong from 25.148.123.3:25000
  
 (Filename:  Line: 836)
+
+Initialize engine version: 4.5.3f3 (fca41a4fabea)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.3788]
+    Renderer: NVIDIA GeForce GTS 450   
+    Vendor:   NVIDIA
+    VRAM:     977 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Default GameObject Tag: Finish already registered
+ 
+(Filename:  Line: 66)
+
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.Zip.Reduced.dll (this message is harmless)
+Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll (this message is harmless)
+Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll into Unity Child Domain
+- Completed reload, in  0.067 seconds
+desktop: 1280x1024 60Hz; virtual: 1280x1024 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\System.dll (this message is harmless)
+Received pong from 192.168.0.102:25000
+ 
+(Filename:  Line: 836)
+
+Received pong from 25.148.123.3:25000
+ 
+(Filename:  Line: 836)
+
+Received pong from 192.168.0.102:25000
+ 
+(Filename:  Line: 836)
+
+Received pong from 25.148.123.3:25000
+ 
+(Filename:  Line: 836)
+
+Received pong from 192.168.0.102:25000
+ 
+(Filename:  Line: 836)
+
+Received pong from 25.148.123.3:25000
+ 
+(Filename:  Line: 836)
+
+Failed to initialize network interface. Is the listen port already in use?
+ 
+(Filename:  Line: 205)
+
+It's not possible to register a host until it is running.
+ 
+(Filename:  Line: 591)
+
+Failed to initialize network interface. Is the listen port already in use?
+ 
+(Filename:  Line: 205)
+
+It's not possible to register a host until it is running.
+ 
+(Filename:  Line: 591)
 

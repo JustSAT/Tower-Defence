@@ -69,18 +69,17 @@ public class NetworkingLobby : MonoBehaviour
             GUI.Box(new Rect(10, 195, Screen.width - 35, Screen.height - 210), "");
 
             GUI.BeginScrollView(new Rect(15, 200, Screen.width - 15, Screen.height - 210), scrollPosition, new Rect(0, 0, 0, Screen.height - 211));
+           
             GUILayout.BeginHorizontal();
-
             GUILayout.Box("Game name:", GUILayout.Width(Screen.width * 0.234375f));
-            //GUILayout.Space(5);
-            //GUILayout.FlexibleSpace();
             GUILayout.Box("Connected players:", GUILayout.Width(Screen.width * 0.1171875f));
             GUILayout.Box("IP and Port:", GUILayout.Width(Screen.width * 0.234375f));
             GUILayout.Box("Commentary:", GUILayout.Width(Screen.width * 0.234375f));
-
             GUILayout.EndHorizontal();
+
             GUILayout.Space(15);
             GUI.EndScrollView();
+
             foreach (HostData element in hostData)
             {
                 scrollPosition = GUI.BeginScrollView(new Rect(15, 200, Screen.width - 15, Screen.height - 210), scrollPosition, new Rect(0, 0, 0, Screen.height - 211));
@@ -176,17 +175,49 @@ public class NetworkingLobby : MonoBehaviour
                 Network.Disconnect();
                 MasterServer.UnregisterHost();
             }
+        }
 
-            currentSize = new Vector2(125, 22);
-            myRect = new Rect(Screen.width / 2 - 350 / 2, 170, currentSize.x, currentSize.y);
-            GUI.Box(myRect, "Your name: " + playerName);
-            
+        if (Network.isServer || Network.isClient)
+        {
+            string text;
+            GUI.Box(new Rect(50, 100, 100, 30), "Server");
+            GUI.Box(new Rect(50, 130, 100, 30), connectedPlayers[0].playerName);
+            text = connectedPlayers[1].playerName;
+            if (connectedPlayers[1].isEmptySlot)
+            {
+                text = "Empty_Slot";
+            }
+            GUI.Box(new Rect(Screen.width - 150, 100, 100, 30), "Slot 1");
+            GUI.Box(new Rect(Screen.width - 150, 130, 100, 30), text);
+            text = connectedPlayers[2].playerName;
+            if (connectedPlayers[2].isEmptySlot)
+            {
+                text = "Empty_Slot";
+            }
+            GUI.Box(new Rect(50, Screen.height - 160, 100, 30), "Slot 2");
+            GUI.Box(new Rect(50, Screen.height - 130, 100, 30), text);
+            text = connectedPlayers[3].playerName;
+            if (connectedPlayers[3].isEmptySlot)
+            {
+                text = "Empty_Slot";
+            }
+            GUI.Box(new Rect(Screen.width - 150, Screen.height - 160, 100, 30), "Slot 3");
+            GUI.Box(new Rect(Screen.width - 150, Screen.height - 130, 100, 30), text);
+
+            Vector2 currentSize = new Vector2(100, 40);
+            Rect myRect = new Rect(Screen.width / 2 - currentSize.x / 2, Screen.height - 30 - currentSize.y, currentSize.x, currentSize.y);
+
+            if (GUI.Button(myRect, "Start Game"))
+            {
+                
+            }
         }
     }
 
     void OnPlayerConnected(NetworkPlayer player)
     {
         Debug.Log("Player " + " connected from " + player.ipAddress + ":" + player.port);
+        Invoke("StartUpdateConnectedPlayers", 0.25f);
     }
 
     void OnConnectedToServer()
@@ -196,8 +227,8 @@ public class NetworkingLobby : MonoBehaviour
 
     void OnPlayerDisconnected(NetworkPlayer player)
     {
-        Debug.Log("Clean up after player " + player);
-        networkView.RPC("CleanUpSlot", RPCMode.Server, new object[] { player });
+        CleanUpSlot(player);
+        Invoke("StartUpdateConnectedPlayers", 0.25f);
         Network.RemoveRPCs(player);
         Network.DestroyPlayerObjects(player);
     }
@@ -213,6 +244,33 @@ public class NetworkingLobby : MonoBehaviour
         connectedPlayers[0].netPlayer = Network.player;
     }
 
+    void CleanUpSlot(NetworkPlayer player)
+    {
+        if (Network.isServer)
+        {
+            foreach (NewNetworkPlayer nnp in connectedPlayers)
+            {
+                if (nnp.netPlayer == player)
+                {
+                    nnp.isEmptySlot = true;
+                    nnp.netPlayer = new NetworkPlayer();
+                    nnp.playerName = "";
+                    break;
+
+                }
+            }
+        }
+    }
+    void StartUpdateConnectedPlayers()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (connectedPlayers[i].isEmptySlot == false)
+                networkView.RPC("UpdateConnectedPlayer", RPCMode.Others, new object[] { i, connectedPlayers[i].playerName, connectedPlayers[i].netPlayer, connectedPlayers[i].isEmptySlot });
+            else
+                networkView.RPC("UpdateConnectedPlayer", RPCMode.Others, new object[] { i, "Empty_Slot", new NetworkPlayer(), true });
+        }
+    }
     [RPC]
     void TakeSlot(NetworkPlayer player, string aNewNickName)
     {
@@ -230,18 +288,12 @@ public class NetworkingLobby : MonoBehaviour
             }
         }
     }
+
     [RPC]
-    void CleanUpSlot(NetworkPlayer player)
+    void UpdateConnectedPlayer(int id, string name, NetworkPlayer player, bool slotStatus)
     {
-        foreach (NewNetworkPlayer nnp in connectedPlayers)
-        {
-            if (nnp.netPlayer == player)
-            {
-                nnp.isEmptySlot = true;
-                nnp.netPlayer = new NetworkPlayer();
-                nnp.playerName = "";
-                break;
-            }
-        }
+        connectedPlayers[id].playerName = name;
+        connectedPlayers[id].netPlayer = player;
+        connectedPlayers[id].isEmptySlot = slotStatus;
     }
 }
