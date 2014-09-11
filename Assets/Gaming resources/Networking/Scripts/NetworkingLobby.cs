@@ -15,7 +15,6 @@ public class NetworkingLobby : MonoBehaviour
     {
         public string playerName;
         public NetworkPlayer netPlayer;
-        public MyNetType playerNetType;
         public bool isEmptySlot = true;
     }
 
@@ -46,6 +45,10 @@ public class NetworkingLobby : MonoBehaviour
     void Start()
     {
         connectedPlayers = new NewNetworkPlayer[4];
+        connectedPlayers[0] = new NewNetworkPlayer();
+        connectedPlayers[1] = new NewNetworkPlayer();
+        connectedPlayers[2] = new NewNetworkPlayer();
+        connectedPlayers[3] = new NewNetworkPlayer();
     }
 
     // Update is called once per frame
@@ -133,11 +136,6 @@ public class NetworkingLobby : MonoBehaviour
                 if (gameName.Length < 5)
                     gameName = "Tower Deffence Game";
                 MasterServer.RegisterHost("TowerDefence", gameName, gameComment);
-
-                if (playerName.Length < 3)
-                {
-                    playerName = "Player";
-                }
             }
 
             currentSize = new Vector2(100, 22);
@@ -182,103 +180,68 @@ public class NetworkingLobby : MonoBehaviour
             currentSize = new Vector2(125, 22);
             myRect = new Rect(Screen.width / 2 - 350 / 2, 170, currentSize.x, currentSize.y);
             GUI.Box(myRect, "Your name: " + playerName);
+            
         }
     }
 
     void OnPlayerConnected(NetworkPlayer player)
     {
         Debug.Log("Player " + " connected from " + player.ipAddress + ":" + player.port);
-        foreach (NewNetworkPlayer nnp in connectedPlayers)
-        {
-            if (nnp.isEmptySlot)
-            {
-                nnp.isEmptySlot = false;
-                nnp.netPlayer = player;
-                nnp.playerNetType = MyNetType.client;
-            }
-        }
+    }
+
+    void OnConnectedToServer()
+    {
+        networkView.RPC("TakeSlot", RPCMode.Server, new object[] { Network.player, playerName });
+    }
+
+    void OnPlayerDisconnected(NetworkPlayer player)
+    {
+        Debug.Log("Clean up after player " + player);
+        networkView.RPC("CleanUpSlot", RPCMode.Server, new object[] { player });
+        Network.RemoveRPCs(player);
+        Network.DestroyPlayerObjects(player);
     }
 
     void OnServerInitialized()
     {
-        connectedPlayers[0].playerName = "Server";
-        connectedPlayers[0].playerNetType = MyNetType.server;
-    }
-
-
-    public void BroadcastNickName()
-    {
-        networkView.RPC("UpdateNickName", RPCMode.All, playerName);
+        if (playerName.Length < 3)
+        {
+            playerName = "Server";
+        }
+        connectedPlayers[0].playerName = playerName;
+        connectedPlayers[0].isEmptySlot = false;
+        connectedPlayers[0].netPlayer = Network.player;
     }
 
     [RPC]
-    void UpdateNickName(string aNewNickName)
+    void TakeSlot(NetworkPlayer player, string aNewNickName)
     {
-        if (networkView.isMine)
-            return; // We don't want others to change our nickname
-        playerName = aNewNickName;
+        if (Network.isServer)
+        {
+            foreach (NewNetworkPlayer nnp in connectedPlayers)
+            {
+                if (nnp.isEmptySlot)
+                {
+                    nnp.isEmptySlot = false;
+                    nnp.netPlayer = player;
+                    nnp.playerName = aNewNickName;
+                    break;
+                }
+            }
+        }
     }
-
+    [RPC]
+    void CleanUpSlot(NetworkPlayer player)
+    {
+        foreach (NewNetworkPlayer nnp in connectedPlayers)
+        {
+            if (nnp.netPlayer == player)
+            {
+                nnp.isEmptySlot = true;
+                nnp.netPlayer = new NetworkPlayer();
+                nnp.playerName = "";
+                break;
+            }
+        }
+    }
 }
-
-
-
-/*
-var remoteIP = "127.0.0.1";
-var remotePort = 25000;
-var listenPort = 25000;
-var useNAT = false;
-var yourIP = "";
-var yourPort = "";
-
-function OnGUI () {
-// Проверка подключены ли вы к Серверу или нет
-if (Network.peerType == NetworkPeerType.Disconnected)
-{
-// Если вы подключены
-if (GUI.Button (new Rect(10,10,100,30),"Connect"))
-{
-Network.useNat = useNAT;
-// Подключение к Серверу
-Network.Connect(remoteIP, remotePort);
-}
-if (GUI.Button (new Rect(10,50,100,30),"Start Server"))
-{
-Network.useNat = useNAT;
-// Создание Сервера
-Network.InitializeServer(32, listenPort);
-// Сказать нашим объектам, что уровень и сеть готова к работе
-for (var go : GameObject in FindObjectsOfType(GameObject))
-{
-go.SendMessage("OnNetworkLoadedLevel",
-SendMessageOptions.DontRequireReceiver);
-}
-}
-// Создаем поля  ip адрес и port
-remoteIP = GUI.TextField(new Rect(120,10,100,20),remoteIP);
-remotePort = parseInt(GUI.TextField(new
-Rect(230,10,40,20),remotePort.ToString()));
-}
-else
-{
-// Получаем твой  ip адрес и port
-ipaddress = Network.player.ipAddress;
-port = Network.player.port.ToString();
-GUI.Label(new Rect(140,20,250,40),"IP Adress: "+ipaddress+":"+port);
-if (GUI.Button (new Rect(10,10,100,50),"Disconnect"))
-{
-// Отключение от Сервера
-Network.Disconnect(200);
-}
-}
-}
-
-function OnConnectedToServer () {
-// Сказать всем объектам что сцена и сеть готовы
-for (var go : GameObject in FindObjectsOfType(GameObject))
-go.SendMessage("OnNetworkLoadedLevel",
-SendMessageOptions.DontRequireReceiver);
-}
-
-
-*/
