@@ -37,6 +37,7 @@ public class NetworkingLobby : MonoBehaviour
 
     void Awake()
     {
+		MasterServer.ipAddress = "10.128.10.201";
         MasterServer.ClearHostList();
         MasterServer.RequestHostList("TowerDefence");
     }
@@ -126,7 +127,7 @@ public class NetworkingLobby : MonoBehaviour
             Vector2 currentSize = new Vector2(100, 20);
 
             currentSize = new Vector2(100, 40);
-            Rect myRect = new Rect(Screen.width / 2 - currentSize.x / 2, 30, currentSize.x, currentSize.y);
+            Rect myRect = new Rect(Screen.width / 2 - currentSize.x / 2, 31, currentSize.x, currentSize.y);
             if (GUI.Button(myRect, "Start Lobby"))
             {
                 // Создание Сервера
@@ -136,6 +137,9 @@ public class NetworkingLobby : MonoBehaviour
                     gameName = "Tower Deffence Game";
                 MasterServer.RegisterHost("TowerDefence", gameName, gameComment);
             }
+			GUI.Box(new Rect(Screen.width / 2 - currentSize.x / 2, 70, currentSize.x, 20), "");
+			currentSize = new Vector2(70, 20);
+			useNat = GUI.Toggle(new Rect(Screen.width / 2 - currentSize.x / 2, 70, currentSize.x, currentSize.y), useNat, "Use Nat");
 
             currentSize = new Vector2(100, 22);
             myRect = new Rect(Screen.width / 2 - 300 / 2, 99, currentSize.x, currentSize.y);
@@ -209,7 +213,8 @@ public class NetworkingLobby : MonoBehaviour
 
             if (GUI.Button(myRect, "Start Game"))
             {
-                
+				MasterServer.UnregisterHost();
+				networkView.RPC("LoadLevel", RPCMode.AllBuffered, null);
             }
         }
     }
@@ -271,6 +276,13 @@ public class NetworkingLobby : MonoBehaviour
                 networkView.RPC("UpdateConnectedPlayer", RPCMode.Others, new object[] { i, "Empty_Slot", new NetworkPlayer(), true });
         }
     }
+
+	[RPC]
+	void LoadLevel()
+	{
+		Application.LoadLevel("devScene");
+	}
+
     [RPC]
     void TakeSlot(NetworkPlayer player, string aNewNickName)
     {
