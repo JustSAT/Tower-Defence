@@ -204,12 +204,14 @@ public class NetworkingLobby : MonoBehaviour
             GUI.Box(new Rect(Screen.width - 150, Screen.height - 160, 100, 30), "Slot 3");
             GUI.Box(new Rect(Screen.width - 150, Screen.height - 130, 100, 30), text);
 
-            Vector2 currentSize = new Vector2(100, 40);
+            Vector2 currentSize = new Vector2(300, 40);
             Rect myRect = new Rect(Screen.width / 2 - currentSize.x / 2, Screen.height - 30 - currentSize.y, currentSize.x, currentSize.y);
-
-            if (GUI.Button(myRect, "Start Game"))
+            if (Network.isServer)
             {
-                
+                if (GUI.Button(myRect, "Start Game"))
+                {
+                    networkView.RPC("LoadLevel", RPCMode.AllBuffered, null);
+                }
             }
         }
     }
@@ -295,5 +297,10 @@ public class NetworkingLobby : MonoBehaviour
         connectedPlayers[id].playerName = name;
         connectedPlayers[id].netPlayer = player;
         connectedPlayers[id].isEmptySlot = slotStatus;
+    }
+    [RPC]
+    void LoadLevel()
+    {
+        Application.LoadLevel("devScene");
     }
 }
