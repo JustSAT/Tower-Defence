@@ -1,0 +1,393 @@
+﻿Построение начато 12.09.2014 18:52:47.
+     1>Проект "E:\Develop\Gamedev\Tower Defence\MasterServer-2.0.1f1\VisualStudio\MasterServer.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         E:\Develop\Microsoft Visual Studio 2012\VC\bin\CL.exe /c /I../RakNet/Sources /I../ /I../Common /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _CONSOLE /D UNITY_MASTERSERVER /D _VC80_UPGRADE=0x0710 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\MasterServer.cpp ..\Common\Log.cpp ..\Common\Utility.cpp ..\RakNet\Sources\_FindFirst.cpp ..\RakNet\Sources\AsynchronousFileIO.cpp ..\RakNet\Sources\BigInt.cpp ..\RakNet\Sources\BitStream.cpp ..\RakNet\Sources\BitStream_NoTemplate.cpp ..\RakNet\Sources\CCRakNetUDT.cpp ..\RakNet\Sources\CheckSum.cpp ..\RakNet\Sources\CommandParserInterface.cpp ..\RakNet\Sources\ConnectionGraph.cpp ..\RakNet\Sources\ConsoleServer.cpp ..\RakNet\Sources\DataBlockEncryptor.cpp ..\RakNet\Sources\DataCompressor.cpp ..\RakNet\Sources\DirectoryDeltaTransfer.cpp ..\RakNet\Sources\DS_BytePool.cpp ..\RakNet\Sources\DS_ByteQueue.cpp ..\RakNet\Sources\DS_HuffmanEncodingTree.cpp ..\RakNet\Sources\DS_Table.cpp ..\RakNet\Sources\EmailSender.cpp ..\RakNet\Sources\EncodeClassName.cpp ..\RakNet\Sources\ExtendedOverlappedPool.cpp ..\RakNet\Sources\FileList.cpp ..\RakNet\Sources\FileListTransfer.cpp ..\RakNet\Sources\FileOperations.cpp ..\RakNet\Sources\GetTime.cpp ..\RakNet\Sources\gettimeofday.cpp ..\RakNet\Sources\Itoa.cpp ..\RakNet\Sources\LightweightDatabaseCommon.cpp ..\RakNet\Sources\LightweightDatabaseServer.cpp ..\RakNet\Sources\LinuxStrings.cpp ..\RakNet\Sources\MessageFilter.cpp ..\RakNet\Sources\NetworkIDManager.cpp ..\RakNet\Sources\PacketFileLogger.cpp ..\RakNet\Sources\PacketLogger.cpp ..\RakNet\Sources\PluginInterface2.cpp ..\RakNet\Sources\RakMemoryOverride.cpp ..\RakNet\Sources\RakNetCommandParser.cpp ..\RakNet\Sources\RakNetSocket.cpp ..\RakNet\Sources\RakNetStatistics.cpp ..\RakNet\Sources\RakNetTransport.cpp ..\RakNet\Sources\RakNetTypes.cpp ..\RakNet\Sources\RakNetworkFactory.cpp ..\RakNet\Sources\RakPeer.cpp ..\RakNet\Sources\RakSleep.cpp ..\RakNet\Sources\RakString.cpp ..\RakNet\Sources\RakThread.cpp ..\RakNet\Sources\Rand.cpp ..\RakNet\Sources\ReliabilityLayer.cpp ..\RakNet\Sources\rijndael.cpp ..\RakNet\Sources\Router.cpp ..\RakNet\Sources\RPCMap.cpp ..\RakNet\Sources\RSACrypt.cpp ..\RakNet\Sources\SHA1.cpp ..\RakNet\Sources\SignaledEvent.cpp ..\RakNet\Sources\SimpleMutex.cpp ..\RakNet\Sources\SocketLayer.cpp ..\RakNet\Sources\StringCompressor.cpp ..\RakNet\Sources\StringTable.cpp ..\RakNet\Sources\SuperFastHash.cpp ..\RakNet\Sources\SystemAddressList.cpp ..\RakNet\Sources\TableSerializer.cpp ..\RakNet\Sources\TCPInterface.cpp ..\RakNet\Sources\ThreadsafePacketLogger.cpp ..\RakNet\Sources\WSAStartupSingleton.cpp
+         WSAStartupSingleton.cpp
+         ThreadsafePacketLogger.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\threadsafepacketlogger.cpp(32): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+         TCPInterface.cpp
+         TableSerializer.cpp
+         SystemAddressList.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\systemaddresslist.cpp(86): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\systemaddresslist.cpp(100): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+         SuperFastHash.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\superfasthash.cpp(92): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+         StringTable.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\stringtable.cpp(66): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\stringtable.cpp(131): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+         StringCompressor.cpp
+         SocketLayer.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\socketlayer.cpp(1070): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+         SimpleMutex.cpp
+         SignaledEvent.cpp
+         SHA1.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(201): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(288): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(289): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(293): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(294): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(301): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(302): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(306): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(307): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\sha1.cpp(312): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+         RSACrypt.cpp
+         RPCMap.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rpcmap.cpp(81): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rpcmap.cpp(123): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+         Router.cpp
+         rijndael.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rijndael.cpp(502): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+         ReliabilityLayer.cpp
+         Rand.cpp
+         RakThread.cpp
+         RakString.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(68): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(349): см. объявление "_vsnprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(77): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(349): см. объявление "_vsnprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(154): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(178): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(196): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(329): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(330): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(359): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(349): см. объявление "_vsnprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(870): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakstring.cpp(884): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+         Создание кода...
+         Компиляция...
+         RakSleep.cpp
+         RakPeer.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakpeer.cpp(2212): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakpeer.cpp(3456): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\rakpeer.cpp(3458): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+         RakNetworkFactory.cpp
+         RakNetTypes.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknettypes.cpp(46): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknettypes.cpp(91): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknettypes.cpp(105): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknettypes.cpp(108): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+         RakNetTransport.cpp
+         RakNetStatistics.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(22): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(35): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(58): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(67): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(68): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(77): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(78): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(126): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(135): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(136): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(145): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\raknetstatistics.cpp(146): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+         RakNetSocket.cpp
+         RakNetCommandParser.cpp
+         RakMemoryOverride.cpp
+         PluginInterface2.cpp
+         PacketLogger.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(55): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(90): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(138): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(159): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(223): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(390): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(395): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(410): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\time.inl(112): см. объявление "localtime"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(413): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetlogger.cpp(414): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+         PacketFileLogger.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetfilelogger.cpp(24): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetfilelogger.cpp(26): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\packetfilelogger.cpp(27): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+         NetworkIDManager.cpp
+         MessageFilter.cpp
+         LinuxStrings.cpp
+         LightweightDatabaseServer.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(82): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(87): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(95): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(103): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(411): warning C4244: =: преобразование "double" в "unsigned short", возможна потеря данных
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(426): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(621): warning C4800: double: принудительно задано логическое значение "true" или "false" (предупреждение о производительности)
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(625): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(644): warning C4244: аргумент: преобразование "double" в "size_t", возможна потеря данных
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(658): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\lightweightdatabaseserver.cpp(770): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+         LightweightDatabaseCommon.cpp
+         Itoa.cpp
+         gettimeofday.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\gettimeofday.cpp(47): warning C4996: '__timezone': This function or variable may be unsafe. Consider using _get_timezone instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\time.h(139): см. объявление "__timezone"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\gettimeofday.cpp(48): warning C4996: '__daylight': This function or variable may be unsafe. Consider using _get_daylight instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\time.h(131): см. объявление "__daylight"
+         GetTime.cpp
+         Создание кода...
+         Компиляция...
+         FileOperations.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\fileoperations.cpp(36): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\fileoperations.cpp(50): warning C4996: 'mkdir': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _mkdir. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\direct.h(140): см. объявление "mkdir"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\fileoperations.cpp(70): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\fileoperations.cpp(86): warning C4996: 'mkdir': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _mkdir. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\direct.h(140): см. объявление "mkdir"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\fileoperations.cpp(126): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\fileoperations.cpp(128): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\fileoperations.cpp(158): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+         FileListTransfer.cpp
+         FileList.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(81): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(182): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(189): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(198): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(208): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(210): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(239): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(240): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(249): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(282): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(301): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(302): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(303): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(484): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(486): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(487): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(543): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(545): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(546): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(632): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(634): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(676): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(678): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(683): warning C4996: 'unlink': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _unlink. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(285): см. объявление "unlink"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\filelist.cpp(701): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(115): см. объявление "strcat"
+         ExtendedOverlappedPool.cpp
+         EncodeClassName.cpp
+         EmailSender.cpp
+         DS_Table.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(99): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(147): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(239): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(943): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(950): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(967): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(982): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(995): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(1009): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\ds_table.cpp(1034): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(191): см. объявление "strncpy"
+         DS_HuffmanEncodingTree.cpp
+         DS_ByteQueue.cpp
+         DS_BytePool.cpp
+         DirectoryDeltaTransfer.cpp
+         DataCompressor.cpp
+         DataBlockEncryptor.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\datablockencryptor.cpp(133): warning C4101: randomChar: неиспользованная локальная переменная
+         ConsoleServer.cpp
+         ConnectionGraph.cpp
+         CommandParserInterface.cpp
+         CheckSum.cpp
+         CCRakNetUDT.cpp
+         BitStream_NoTemplate.cpp
+         BitStream.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\bitstream.cpp(749): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\string.h(110): см. объявление "strcpy"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\raknet\sources\bitstream.cpp(792): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(357): см. объявление "sprintf"
+         Создание кода...
+         Компиляция...
+         BigInt.cpp
+         AsynchronousFileIO.cpp
+         _FindFirst.cpp
+         Utility.cpp
+         Log.cpp
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\common\log.cpp(24): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\time.inl(112): см. объявление "localtime"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\common\log.cpp(114): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\common\log.cpp(128): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\time.inl(112): см. объявление "localtime"
+     1>e:\develop\gamedev\tower defence\masterserver-2.0.1f1\common\log.cpp(131): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 e:\develop\microsoft visual studio 2012\vc\include\stdio.h(218): см. объявление "fopen"
+         MasterServer.cpp
+         Создание кода...
+       Link:
+         E:\Develop\Microsoft Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug\MasterServer.exe" /INCREMENTAL /NOLOGO ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Debug\MasterServer.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"Debug\MasterServer.lib" /MACHINE:X86 /SAFESEH Debug\MasterServer.obj
+         Debug\Log.obj
+         Debug\Utility.obj
+         Debug\_FindFirst.obj
+         Debug\AsynchronousFileIO.obj
+         Debug\BigInt.obj
+         Debug\BitStream.obj
+         Debug\BitStream_NoTemplate.obj
+         Debug\CCRakNetUDT.obj
+         Debug\CheckSum.obj
+         Debug\CommandParserInterface.obj
+         Debug\ConnectionGraph.obj
+         Debug\ConsoleServer.obj
+         Debug\DataBlockEncryptor.obj
+         Debug\DataCompressor.obj
+         Debug\DirectoryDeltaTransfer.obj
+         Debug\DS_BytePool.obj
+         Debug\DS_ByteQueue.obj
+         Debug\DS_HuffmanEncodingTree.obj
+         Debug\DS_Table.obj
+         Debug\EmailSender.obj
+         Debug\EncodeClassName.obj
+         Debug\ExtendedOverlappedPool.obj
+         Debug\FileList.obj
+         Debug\FileListTransfer.obj
+         Debug\FileOperations.obj
+         Debug\GetTime.obj
+         Debug\gettimeofday.obj
+         Debug\Itoa.obj
+         Debug\LightweightDatabaseCommon.obj
+         Debug\LightweightDatabaseServer.obj
+         Debug\LinuxStrings.obj
+         Debug\MessageFilter.obj
+         Debug\NetworkIDManager.obj
+         Debug\PacketFileLogger.obj
+         Debug\PacketLogger.obj
+         Debug\PluginInterface2.obj
+         Debug\RakMemoryOverride.obj
+         Debug\RakNetCommandParser.obj
+         Debug\RakNetSocket.obj
+         Debug\RakNetStatistics.obj
+         Debug\RakNetTransport.obj
+         Debug\RakNetTypes.obj
+         Debug\RakNetworkFactory.obj
+         Debug\RakPeer.obj
+         Debug\RakSleep.obj
+         Debug\RakString.obj
+         Debug\RakThread.obj
+         Debug\Rand.obj
+         Debug\ReliabilityLayer.obj
+         Debug\rijndael.obj
+         Debug\Router.obj
+         Debug\RPCMap.obj
+         Debug\RSACrypt.obj
+         Debug\SHA1.obj
+         Debug\SignaledEvent.obj
+         Debug\SimpleMutex.obj
+         Debug\SocketLayer.obj
+         Debug\StringCompressor.obj
+         Debug\StringTable.obj
+         Debug\SuperFastHash.obj
+         Debug\SystemAddressList.obj
+         Debug\TableSerializer.obj
+         Debug\TCPInterface.obj
+         Debug\ThreadsafePacketLogger.obj
+         Debug\WSAStartupSingleton.obj
+     1>MasterServer.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/SAFESEH"
+         MasterServer.vcxproj -> E:\Develop\Gamedev\Tower Defence\MasterServer-2.0.1f1\VisualStudio\Debug\MasterServer.exe
+     1>Построение проекта "E:\Develop\Gamedev\Tower Defence\MasterServer-2.0.1f1\VisualStudio\MasterServer.vcxproj" завершено (целевые объекты Build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:21.82

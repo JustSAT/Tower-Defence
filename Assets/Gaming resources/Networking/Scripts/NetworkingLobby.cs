@@ -4,12 +4,6 @@ using System;
 
 public class NetworkingLobby : MonoBehaviour
 {
-    public enum MyNetType : int
-    {
-        server = 0,
-        client = 1
-    };
-
     [System.Serializable]
     public class NewNetworkPlayer
     {
@@ -23,8 +17,13 @@ public class NetworkingLobby : MonoBehaviour
     public string playerName = "";
 
 
+    public AudioClip connectedPlayerSong;
+    public AudioClip disconnectedPlayerSong;
+    public GameObject mainSongObject;
+    public AudioClip mainSong;
 
-    public MyNetType myType = MyNetType.client;
+    private bool showMasterServerIpConf = false;
+    public string masterServerIP = "";
 
     public string gameName = "";
     public string gameComment = "";
@@ -33,11 +32,13 @@ public class NetworkingLobby : MonoBehaviour
     public Vector2 scrollPosition = Vector2.zero;
     private string myIP = "";
     private string myPort = "";
-
+    
 
     void Awake()
     {
-		MasterServer.ipAddress = "10.128.10.201";
+        masterServerIP = Network.player.ipAddress;
+        MasterServer.ipAddress = masterServerIP;
+        
         MasterServer.ClearHostList();
         MasterServer.RequestHostList("TowerDefence");
     }
@@ -45,6 +46,11 @@ public class NetworkingLobby : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if (mainSong)
+        {
+            mainSongObject.audio.clip = mainSong;
+            mainSongObject.audio.Play();
+        }
         connectedPlayers = new NewNetworkPlayer[4];
         connectedPlayers[0] = new NewNetworkPlayer();
         connectedPlayers[1] = new NewNetworkPlayer();
@@ -59,18 +65,35 @@ public class NetworkingLobby : MonoBehaviour
         {
             scrollPosition = new Vector2(0, scrollPosition.y + Input.GetAxis("Mouse ScrollWheel"));
         }
+
+        if (Network.peerType == NetworkPeerType.Disconnected && Input.GetKeyUp(KeyCode.F1))
+        {
+            showMasterServerIpConf = !showMasterServerIpConf;
+        }
     }
 
     void OnGUI()
     {
         if (Network.peerType == NetworkPeerType.Disconnected)
         {
+
+            if (showMasterServerIpConf)
+            {
+                GUI.Box(new Rect(10, 30, 100, 20), "MS IP:");
+                masterServerIP = GUI.TextField(new Rect(110, 30, 150, 20), masterServerIP);
+                MasterServer.ipAddress = masterServerIP;
+                GUI.Box(new Rect(10, 51, 100, 20), "Your local IP:");
+                GUI.TextField(new Rect(110, 51, 150, 20), Network.player.ipAddress);
+                GUI.Box(new Rect(10, 72, 100, 20), "Your external IP:");
+                GUI.TextField(new Rect(110, 72, 150, 20), Network.player.externalIP);
+            }
+
             MasterServer.RequestHostList("TowerDefence");
             HostData[] hostData = MasterServer.PollHostList();
             GUI.Box(new Rect(10, 195, Screen.width - 35, Screen.height - 210), "");
 
             GUI.BeginScrollView(new Rect(15, 200, Screen.width - 15, Screen.height - 210), scrollPosition, new Rect(0, 0, 0, Screen.height - 211));
-           
+
             GUILayout.BeginHorizontal();
             GUILayout.Box("Game name:", GUILayout.Width(Screen.width * 0.234375f));
             GUILayout.Box("Connected players:", GUILayout.Width(Screen.width * 0.1171875f));
@@ -131,15 +154,14 @@ public class NetworkingLobby : MonoBehaviour
             if (GUI.Button(myRect, "Start Lobby"))
             {
                 // Создание Сервера
-                myType = MyNetType.server;
                 Network.InitializeServer(3, remotePort, useNat);
                 if (gameName.Length < 5)
                     gameName = "Tower Deffence Game";
                 MasterServer.RegisterHost("TowerDefence", gameName, gameComment);
             }
-			GUI.Box(new Rect(Screen.width / 2 - currentSize.x / 2, 70, currentSize.x, 20), "");
-			currentSize = new Vector2(70, 20);
-			useNat = GUI.Toggle(new Rect(Screen.width / 2 - currentSize.x / 2, 70, currentSize.x, currentSize.y), useNat, "Use Nat");
+            GUI.Box(new Rect(Screen.width / 2 - currentSize.x / 2, 70, currentSize.x, 20), "");
+            currentSize = new Vector2(70, 20);
+            useNat = GUI.Toggle(new Rect(Screen.width / 2 - currentSize.x / 2, 70, currentSize.x, currentSize.y), useNat, "Use Nat");
 
             currentSize = new Vector2(100, 22);
             myRect = new Rect(Screen.width / 2 - 300 / 2, 99, currentSize.x, currentSize.y);
@@ -175,7 +197,6 @@ public class NetworkingLobby : MonoBehaviour
                 disconnectText = "Disconnect";
             if (GUI.Button(myRect, disconnectText))
             {
-                myType = MyNetType.client;
                 Network.Disconnect();
                 MasterServer.UnregisterHost();
             }
@@ -184,37 +205,43 @@ public class NetworkingLobby : MonoBehaviour
         if (Network.isServer || Network.isClient)
         {
             string text;
-            GUI.Box(new Rect(50, 100, 100, 30), "Server");
-            GUI.Box(new Rect(50, 130, 100, 30), connectedPlayers[0].playerName);
+            Vector2 size = new Vector2(200, 30);
+            GUI.Box(new Rect(50, 100, size.x, size.y), "Server");
+            if (!connectedPlayers[0].isEmptySlot)
+                GUI.Box(new Rect(50, 131, size.x, size.y), connectedPlayers[0].playerName);
+
             text = connectedPlayers[1].playerName;
             if (connectedPlayers[1].isEmptySlot)
             {
                 text = "Empty_Slot";
             }
-            GUI.Box(new Rect(Screen.width - 150, 100, 100, 30), "Slot 1");
-            GUI.Box(new Rect(Screen.width - 150, 130, 100, 30), text);
+            GUI.Box(new Rect(Screen.width - size.x - 50, 100, size.x, size.y), "Slot 1");
+            if (!connectedPlayers[1].isEmptySlot)
+                GUI.Box(new Rect(Screen.width - size.x - 50, 131, size.x, size.y), text);
             text = connectedPlayers[2].playerName;
             if (connectedPlayers[2].isEmptySlot)
             {
                 text = "Empty_Slot";
             }
-            GUI.Box(new Rect(50, Screen.height - 160, 100, 30), "Slot 2");
-            GUI.Box(new Rect(50, Screen.height - 130, 100, 30), text);
+            GUI.Box(new Rect(50, Screen.height - 160, size.x, size.y), "Slot 2");
+            if (!connectedPlayers[2].isEmptySlot)
+                GUI.Box(new Rect(50, Screen.height - 129, size.x, size.y), text);
             text = connectedPlayers[3].playerName;
             if (connectedPlayers[3].isEmptySlot)
             {
                 text = "Empty_Slot";
             }
-            GUI.Box(new Rect(Screen.width - 150, Screen.height - 160, 100, 30), "Slot 3");
-            GUI.Box(new Rect(Screen.width - 150, Screen.height - 130, 100, 30), text);
+            GUI.Box(new Rect(Screen.width - size.x - 50, Screen.height - 160, size.x, size.y), "Slot 3");
+            if (!connectedPlayers[3].isEmptySlot)
+                GUI.Box(new Rect(Screen.width - size.x - 50, Screen.height - 129, size.x, size.y), text);
 
-            Vector2 currentSize = new Vector2(100, 40);
+            Vector2 currentSize = new Vector2(300, 40);
             Rect myRect = new Rect(Screen.width / 2 - currentSize.x / 2, Screen.height - 30 - currentSize.y, currentSize.x, currentSize.y);
 
             if (GUI.Button(myRect, "Start Game"))
             {
-				MasterServer.UnregisterHost();
-				networkView.RPC("LoadLevel", RPCMode.AllBuffered, null);
+                MasterServer.UnregisterHost();
+                networkView.RPC("LoadLevel", RPCMode.AllBuffered, null);
             }
         }
     }
@@ -223,6 +250,7 @@ public class NetworkingLobby : MonoBehaviour
     {
         Debug.Log("Player " + " connected from " + player.ipAddress + ":" + player.port);
         Invoke("StartUpdateConnectedPlayers", 0.25f);
+        networkView.RPC("PlayAudio", RPCMode.AllBuffered, new object[] { 1 });
     }
 
     void OnConnectedToServer()
@@ -236,6 +264,7 @@ public class NetworkingLobby : MonoBehaviour
         Invoke("StartUpdateConnectedPlayers", 0.25f);
         Network.RemoveRPCs(player);
         Network.DestroyPlayerObjects(player);
+        networkView.RPC("PlayAudio", RPCMode.AllBuffered, new object[] { 2 });
     }
 
     void OnServerInitialized()
@@ -266,6 +295,7 @@ public class NetworkingLobby : MonoBehaviour
             }
         }
     }
+
     void StartUpdateConnectedPlayers()
     {
         for (int i = 0; i < 4; i++)
@@ -307,5 +337,27 @@ public class NetworkingLobby : MonoBehaviour
         connectedPlayers[id].playerName = name;
         connectedPlayers[id].netPlayer = player;
         connectedPlayers[id].isEmptySlot = slotStatus;
+    }
+
+    [RPC]
+    void PlayAudio(int id)
+    {
+        switch (id)
+        {
+            case 1:
+                if (connectedPlayerSong)
+                {
+                    audio.clip = connectedPlayerSong;
+                    audio.Play();
+                }
+                break;
+            case 2:
+                if (disconnectedPlayerSong)
+                {
+                    audio.clip = disconnectedPlayerSong;
+                    audio.Play();
+                }
+                break;
+        }
     }
 }
