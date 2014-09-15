@@ -36,27 +36,28 @@ public class WaveEnemy
     public bool isWaveEnded = false;
     public float spawnSpeed = 1.0f;
 }
+
+// WavePoint - клас, який містить дані: місце спавну монстрів; куди монстри йдуть.
 [System.Serializable]
 public class WavePoint
 {
-    Transform startPoint;
-    Transform finishPoint;
+    public Transform startPoint;
+    public Transform finishPoint;
 }
-
+// PlayerWavesPoints - WavePoint для кожного гравця.
 [System.Serializable]
 public class PlayersWavesPoints
 {
-    WavePoint Player1;
-    WavePoint Player2;
-    WavePoint Player3;
-    WavePoint Player4;
+    public WavePoint[] player = new WavePoint[4];
 }
+
 public class WaveManipulator : MonoBehaviour {
 
     public byte curWave = 0;
     public byte wavesCount = 3;
+
+    public PlayersWavesPoints playersWavesPoints;
     public WaveEnemy[] wavesEnemies;
-    public GameObject finishPoint;
 
     public float timeToNextWave = 30.0f;
 
@@ -64,11 +65,12 @@ public class WaveManipulator : MonoBehaviour {
 
     public int startMoney = 100;
     private int curBotSpawned = 0;
+    NetworkingLobby nl;
 	// Use this for initialization
 	void Start () {
         if (GameObject.FindGameObjectWithTag("Lobby"))
         {
-            NetworkingLobby nl = GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>();
+            nl = GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>();
             for(int i = 0; i < 4; i++)
             {
                 if (nl.connectedPlayers[i].isEmptySlot == false)
@@ -88,7 +90,7 @@ public class WaveManipulator : MonoBehaviour {
             {
                 guiText = "Часу до старту хвилі:";
                 timeToNextWave -= Time.deltaTime;
-                networkView.RPC("SyncData", RPCMode.AllBuffered, new object[] { timeToNextWave, curWave, guiText });
+                networkView.RPC("SyncData", RPCMode.AllBuffered, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
             }
             else if (timeToNextWave < 0.0f)
             {
@@ -96,7 +98,7 @@ public class WaveManipulator : MonoBehaviour {
                 guiText = "Хвиля вийшла!";
                 if (curWave < wavesCount)
                     StartWave();
-                networkView.RPC("SyncData", RPCMode.AllBuffered, new object[] { timeToNextWave, curWave, guiText });
+                networkView.RPC("SyncData", RPCMode.AllBuffered, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
             }
         }
 	}
@@ -106,7 +108,13 @@ public class WaveManipulator : MonoBehaviour {
         if (Network.isServer)
         {
             wavesEnemies[curWave].isWaveStarted = true;
-            StartCoroutine(StartSpawn(wavesEnemies[curWave].spawnSpeed));
+            for (int i = 0; i < 4; i++)
+            {
+                if (nl.connectedPlayers[i].isEmptySlot == false)
+                {
+                    StartCoroutine(StartSpawn(wavesEnemies[curWave].spawnSpeed, i));
+                }
+            }
         }
     }
 
@@ -132,13 +140,13 @@ public class WaveManipulator : MonoBehaviour {
         }
     }
 
-    IEnumerator StartSpawn(float delay)
+    IEnumerator StartSpawn(float delay, int playerId)
     {
 
         yield return new WaitForSeconds(delay);
         if (curBotSpawned < wavesEnemies[curWave].waveLength)
         {
-            Transform go = Network.Instantiate(wavesEnemies[curWave].enemyPrefab, transform.position + Vector3.up, Quaternion.identity, 5)as Transform;
+            Transform go = Network.Instantiate(wavesEnemies[curWave].enemyPrefab, playersWavesPoints.player[playerId].startPoint.position, Quaternion.identity, 5)as Transform;
             EnemyUnit eu = go.GetComponent<EnemyUnit>();
             eu.maxHealth = wavesEnemies[curWave].enemyHealth;
             eu.curHealth = eu.maxHealth;
@@ -152,18 +160,19 @@ public class WaveManipulator : MonoBehaviour {
             curBotSpawned++;
             wavesEnemies[curWave].enemiesOnScene++;
             if (go.GetComponent<MineBotAI>())
-                go.GetComponent<MineBotAI>().target = finishPoint.transform;
-            if (go.GetComponent<BotAI>())
-                go.GetComponent<BotAI>().target = finishPoint.transform;
+                go.GetComponent<MineBotAI>().target = playersWavesPoints.player[playerId].finishPoint;
+            else if (go.GetComponent<BotAI>())
+                go.GetComponent<BotAI>().target = playersWavesPoints.player[playerId].finishPoint;
 
-            StartCoroutine(StartSpawn(wavesEnemies[curWave].spawnSpeed));
+            StartCoroutine(StartSpawn(wavesEnemies[curWave].spawnSpeed, playerId));
         }
     }
     [RPC]
-    void SyncData(float timeToNextWave, byte curWave, string guiText)
+    void SyncData(float timeToNextWave, int curWave, string guiText)
     {
+        
         this.timeToNextWave = timeToNextWave;
-        this.curWave = curWave;
+        this.curWave = byte.Parse(curWave.ToString());
         this.guiText = guiText;
 
     }

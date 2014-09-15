@@ -34,7 +34,10 @@ public class UnitSelection : MonoBehaviour {
         GameObject[] fUnits = GameObject.FindGameObjectsWithTag("Unit");    //Промежуточный массив для избегания невозможности приобразования типов
         foreach (GameObject go in fUnits)            //Для каждого ИгровогоОбъекта go в массиве fUnits. Каждый елемент массива поочереди помещается в переменную go
         {
-            allUnits.Add(go);
+            if (go.networkView.isMine)
+            {
+                allUnits.Add(go);
+            }
         }
         BTGUI = GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>();
 

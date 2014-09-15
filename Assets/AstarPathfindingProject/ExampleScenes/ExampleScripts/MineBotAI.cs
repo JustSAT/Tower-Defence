@@ -126,4 +126,17 @@ public class MineBotAI : AIPath {
 			state.speed = speed*animationSpeed;
 		}
 	}
+    void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info)
+    {/*
+        Animation
+        if (stream.isWriting)
+        {
+            stream.Serialize(ref health);
+        }
+        else
+        {
+            stream.Serialize(ref health);
+
+        }*/
+    }
 }
