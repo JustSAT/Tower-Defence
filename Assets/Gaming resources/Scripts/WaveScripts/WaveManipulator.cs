@@ -24,6 +24,7 @@ public class WaveManipulator : MonoBehaviour {
     public byte curWave = 0;
     public byte wavesCount = 3;
     public WaveEnemy[] wavesEnemies;
+    public GameObject finishPoint;
 
     public float timeToNextWave = 30.0f;
 
@@ -54,9 +55,11 @@ public class WaveManipulator : MonoBehaviour {
 
     void StartWave()
     {
-        wavesEnemies[curWave].isWaveStarted = true;
-        StartCoroutine(StartSpawn(wavesEnemies[curWave].spawnSpeed));
-
+        if (Network.isServer)
+        {
+            wavesEnemies[curWave].isWaveStarted = true;
+            StartCoroutine(StartSpawn(wavesEnemies[curWave].spawnSpeed));
+        }
     }
 
     public void CheckWavesEnd()
@@ -87,7 +90,7 @@ public class WaveManipulator : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         if (curBotSpawned < wavesEnemies[curWave].waveLength)
         {
-            Transform go = Instantiate(wavesEnemies[curWave].enemyPrefab, transform.position + Vector3.up, Quaternion.identity) as Transform;
+            Transform go = Network.Instantiate(wavesEnemies[curWave].enemyPrefab, transform.position + Vector3.up, Quaternion.identity, 5)as Transform;
             EnemyUnit eu = go.GetComponent<EnemyUnit>();
             eu.maxHealth = wavesEnemies[curWave].enemyHealth;
             eu.curHealth = eu.maxHealth;
@@ -101,9 +104,9 @@ public class WaveManipulator : MonoBehaviour {
             curBotSpawned++;
             wavesEnemies[curWave].enemiesOnScene++;
             if (go.GetComponent<MineBotAI>())
-                go.GetComponent<MineBotAI>().target = GameObject.FindGameObjectWithTag("Finish").transform;
+                go.GetComponent<MineBotAI>().target = finishPoint.transform;
             if (go.GetComponent<BotAI>())
-                go.GetComponent<BotAI>().target = GameObject.FindGameObjectWithTag("Finish").transform;
+                go.GetComponent<BotAI>().target = finishPoint.transform;
 
             StartCoroutine(StartSpawn(wavesEnemies[curWave].spawnSpeed));
         }

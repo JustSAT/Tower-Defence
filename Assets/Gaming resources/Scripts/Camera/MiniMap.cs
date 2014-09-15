@@ -29,9 +29,11 @@ public class MiniMap : MonoBehaviour {
             if (mouseOverMinimap)
             {
                 RaycastHit hit;
+                int layerMask = 1 << 8;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, 400.0f, layerMask))
                 {
+                    
                     GameObject.FindGameObjectWithTag("CameraParent").GetComponent<CameraMovement>().SetCameraByMinimap(hit.point);
                 }
             }

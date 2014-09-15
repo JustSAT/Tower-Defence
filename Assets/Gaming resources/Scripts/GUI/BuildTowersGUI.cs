@@ -119,17 +119,20 @@ public class BuildTowersGUI : MonoBehaviour {
             }
             
         }
+        if (startWaveObject)
+        {
+            GUI.Box(new Rect(10, 10, 75, 20), "Гроші:", informationStyle);
+            GUI.Box(new Rect(90, 10, 100, 20), myMoney.ToString(), informationStyle);
+            GUI.Box(new Rect(10, 40, 75, 20), "Хвиля:", informationStyle);
 
-        GUI.Box(new Rect(10, 10, 75, 20), "Гроші:", informationStyle);
-        GUI.Box(new Rect(90, 10, 100, 20), myMoney.ToString(), informationStyle);
-        GUI.Box(new Rect(10, 40, 75, 20), "Хвиля:", informationStyle);
-        GUI.Box(new Rect(90, 40, 100, 20), (startWaveObject.GetComponent<WaveManipulator>().curWave + 1).ToString(), informationStyle);
+            GUI.Box(new Rect(90, 40, 100, 20), (startWaveObject.GetComponent<WaveManipulator>().curWave + 1).ToString(), informationStyle);
 
-        GUI.Box(new Rect(Screen.width / 2 - 180 / 2, 10, 180, 20), GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().guiText, informationStyle);
-        GUI.Box(new Rect(Screen.width / 2 - 180 / 2, 40, 180, 20), Mathf.Round(startWaveObject.GetComponent<WaveManipulator>().timeToNextWave).ToString(), informationStyle);
+            GUI.Box(new Rect(Screen.width / 2 - 180 / 2, 10, 180, 20), GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().guiText, informationStyle);
+            GUI.Box(new Rect(Screen.width / 2 - 180 / 2, 40, 180, 20), Mathf.Round(startWaveObject.GetComponent<WaveManipulator>().timeToNextWave).ToString(), informationStyle);
 
-        GUI.Box(new Rect(Screen.width - 190, 10, 180, 20), "Залишилось життів:", informationStyle);
-        GUI.Box(new Rect(Screen.width - 190, 40, 180, 20), "");
+            GUI.Box(new Rect(Screen.width - 190, 10, 180, 20), "Залишилось життів:", informationStyle);
+            GUI.Box(new Rect(Screen.width - 190, 40, 180, 20), "");
+        }
         if (curLevelHealth > 0)
         {
             GUI.Box(new Rect(Screen.width - 188, 41, ((float)curLevelHealth / (float)maxLevelHealth) * (float)176, 18), "", levelHealthStyle);
