@@ -57,6 +57,7 @@ public class TowerBullet : MonoBehaviour {
         //Second child its our bullet model
 
         transform.GetChild(1).transform.gameObject.SetActive(false);
+        transform.GetChild(2).transform.gameObject.SetActive(false);
         Instantiate(particlePrefab, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);
         //First child its Particle System.
         transform.GetChild(0).GetComponent<ParticleSystem>().loop = false;

@@ -10,6 +10,7 @@ public class NetworkingLobby : MonoBehaviour
         public string playerName;
         public NetworkPlayer netPlayer;
         public bool isEmptySlot = true;
+        public int money;
     }
 
     public NewNetworkPlayer[] connectedPlayers;
@@ -270,8 +271,6 @@ public class NetworkingLobby : MonoBehaviour
     }
     void OnMasterServerEvent(MasterServerEvent msEvent)
     {
-        Debug.Log(msEvent);
-
     }
 
     void OnPlayerConnected(NetworkPlayer player)

@@ -11,9 +11,8 @@ public class BuildZone : MonoBehaviour {
 	void Start () {
         buildPosition = transform.position + new Vector3(0, transform.localScale.y / 2, 0);
         RaycastHit hit;
-        int layerMask = 1 << 9;
-        layerMask = ~layerMask;
-        if (Physics.Raycast(transform.position + Vector3.up * 20, -Vector3.up, out hit, 100.0f))
+        int layerMask = 1 << 8;
+        if (Physics.Raycast(transform.position + Vector3.up * 20, -Vector3.up, out hit, 100.0f, layerMask))
         {
             buildPosition = hit.point;
         }

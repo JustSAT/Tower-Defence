@@ -21,7 +21,7 @@ public class FinishPoint : MonoBehaviour
             GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().wavesEnemies[other.GetComponent<EnemyUnit>().enemyId].enemiesOnScene--;
             GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().CheckWavesEnd();
             GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().ApplyEnemyDamage();
-            Destroy(other.transform.gameObject);
+            Network.Destroy(other.transform.gameObject);
         }
     }
 }

@@ -68,7 +68,7 @@ public class BuildTowersGUI : MonoBehaviour {
                         {
                             if (hit.transform.tag == "BuildZone" && !hit.transform.gameObject.GetComponent<BuildZone>().isBuilded)
                             {
-                                GameObject go = Instantiate(towers[curBuildTowerId].towerPrefab.gameObject, hit.transform.gameObject.GetComponent<BuildZone>().buildPosition, Quaternion.identity) as GameObject;
+                                GameObject go = Network.Instantiate(towers[curBuildTowerId].towerPrefab.gameObject, hit.transform.gameObject.GetComponent<BuildZone>().buildPosition, Quaternion.identity, 6) as GameObject;
                                 Transform forProperties = go.transform.GetChild(1);
 
                                 forProperties.GetComponent<Tower>().attackSpeed = towers[curBuildTowerId].attackSpeed;
