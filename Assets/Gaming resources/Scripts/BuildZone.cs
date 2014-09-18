@@ -9,6 +9,7 @@ public class BuildZone : MonoBehaviour {
     public Vector3 buildPosition;
 	// Use this for initialization
 	void Start () {
+        
         buildPosition = transform.position + new Vector3(0, transform.localScale.y / 2, 0);
         RaycastHit hit;
         int layerMask = 1 << 8;
@@ -17,7 +18,7 @@ public class BuildZone : MonoBehaviour {
             buildPosition = hit.point;
         }
         backlight.transform.position = buildPosition + new Vector3(0, 0.4f, 0);
-        backlight.gameObject.SetActive(false);
+        Invoke("DisableBacklight", 2);
         SetBuilded(false);
 	}
 	
@@ -30,7 +31,11 @@ public class BuildZone : MonoBehaviour {
         if(isYellowed)
             OnMouseExit();
     }
-
+    void DisableBacklight()
+    {
+        backlight.gameObject.SetActive(false);
+        
+    }
     bool isYellowed = false;
     public void OnMouseEnter()
     {

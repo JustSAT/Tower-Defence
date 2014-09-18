@@ -7,6 +7,7 @@ public class MiniMap : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         myCamera = transform.GetComponent<Camera>();
+        myCamera.depth = Camera.main.depth +5;
 	}
 	
 	// Update is called once per frame

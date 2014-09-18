@@ -8,7 +8,8 @@ public class HUD : MonoBehaviour {
         left = 0,
         middle = 1,
         right = 2,
-        minimap = 3
+        minimap = 3,
+        leftbg = 4
     };
     public Texture texture;
 
@@ -34,6 +35,7 @@ public class HUD : MonoBehaviour {
         {
             GetComponent<GUITexture>().pixelInset = new Rect(Screen.width / 3 / 2, -Screen.height / 2 - 1, Screen.width / 3, 200);
         }
+        
     }
     void OnGUI()
     {
@@ -55,6 +57,7 @@ public class HUD : MonoBehaviour {
             GUI.depth = 1;
             Graphics.DrawTexture(new Rect(5, Screen.height - 205, 300, 200), texture);
         }
+         
 
     }
     void OnMouseEnter()

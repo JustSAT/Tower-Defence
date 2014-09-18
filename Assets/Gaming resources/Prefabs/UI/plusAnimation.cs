@@ -7,6 +7,7 @@ public class plusAnimation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	    GetComponent<TextMesh>().text = "+" + text;
+        audio.Play();
 	}
 	
 	// Update is called once per frame

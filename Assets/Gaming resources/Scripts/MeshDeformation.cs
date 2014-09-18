@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class MeshDeformation : MonoBehaviour {
     
     public float upValue = 1.0f;
@@ -9,9 +10,11 @@ public class MeshDeformation : MonoBehaviour {
     private Vector2[] newUV;
     private int[] newTriangles;
     private Transform myRaycastPoint;
-    public bool doAlways = true;
+    public bool doAlways = false;
+    public bool doOnce = false;
     void Start()
     {
+        doAlways = true;
         myRaycastPoint = GameObject.CreatePrimitive(PrimitiveType.Sphere).transform;
         myRaycastPoint.parent = transform;
         myRaycastPoint.transform.position = Vector3.zero;
@@ -27,12 +30,18 @@ public class MeshDeformation : MonoBehaviour {
         newTriangles = mesh.triangles;
 
         GetComponent<MeshFilter>().mesh = mesh;
-        Calculate();
+        if(!doAlways)
+            Calculate();
+        Invoke("SetDoOnce", 1);
     }
-	
+    void SetDoOnce()
+    {
+        doOnce = true;
+    }
 	// Update is called once per frame
-	void FixedUpdate () {
-        if (doAlways)
+	void Update () {
+
+        if (doAlways || doOnce)
         {
             Mesh mesh = new Mesh();
             mesh = GetComponent<MeshFilter>().mesh;
@@ -52,14 +61,17 @@ public class MeshDeformation : MonoBehaviour {
                     newVertices[i] = myRaycastPoint.transform.localPosition;
                 }
             }
-            
             GetComponent<MeshFilter>().mesh = mesh;
+            if (doOnce)
+                doOnce = false;
         }
 	}
+
     public void Calculate()
     {
-        for (int q = 0; q < 2; q++)
+        for (int q = 0; q < 1; q++)
         {
+            Debug.LogWarning("q = " + q);
             Mesh mesh = new Mesh();
             mesh = GetComponent<MeshFilter>().mesh;
 
@@ -74,8 +86,6 @@ public class MeshDeformation : MonoBehaviour {
                 int layerMask = 1 << 8;
                 if (Physics.Raycast(myRaycastPoint.transform.position, -Vector3.up, out hit, 100.0f, layerMask))
                 {
-                    if (hit.transform.tag != "Terrain")
-                        print("Shit");
                     myRaycastPoint.transform.position = hit.point + new Vector3(0, upValue, 0);
                     newVertices[i] = myRaycastPoint.transform.localPosition;
                 }
