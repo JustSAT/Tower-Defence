@@ -29,13 +29,14 @@ public class EnemyUnit : MonoBehaviour {
 	
 	}
 
-    public void ApplyDamage(float damage)
+    public void ApplyDamage(float damage, GameObject tower, int killerId)
     {
         if (!startDeath)
         {
             if (damage >= curHealth && !startDeath)
             {
-                KillEnemy();
+                KillEnemy(killerId);
+                
             }
             else
             {
@@ -44,18 +45,18 @@ public class EnemyUnit : MonoBehaviour {
         }
     }
 
-    void KillEnemy()
+    void KillEnemy(int killerId)
     {
         curHealth = 0;
         startDeath = true;
 
         Transform particle = null;
         if(destroyParticle)
-            particle = Instantiate(destroyParticle, transform.position, Quaternion.identity) as Transform;
+            particle = Network.Instantiate(destroyParticle, transform.position, Quaternion.identity,5) as Transform;
 
         Transform go = null;
         if(destroyedBody)
-            go = Instantiate(destroyedBody, transform.position, Quaternion.identity) as Transform;
+            go = Network.Instantiate(destroyedBody, transform.position, Quaternion.identity,5) as Transform;
 
         if(transform.GetComponent<MineBotAI>())
             transform.GetComponent<MineBotAI>().enabled = false;
@@ -81,9 +82,14 @@ public class EnemyUnit : MonoBehaviour {
 
         GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().wavesEnemies[enemyId].enemiesOnScene--;
         GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().CheckWavesEnd();
-        
-        GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().myMoney += enemyCost;
-        Destroy(this.gameObject);
+
+        if (Network.isServer)
+        {
+            GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>().connectedPlayers[killerId].money += enemyCost;
+            GameObject.FindGameObjectWithTag("Lobby").networkView.RPC("SetMoney", GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>().connectedPlayers[killerId].netPlayer, new object[] { GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>().connectedPlayers[killerId].money });
+        }
+
+        Network.Destroy(this.gameObject);
     }
     void OnTriggerEnter(Collider other)
     {

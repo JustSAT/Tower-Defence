@@ -70,6 +70,7 @@ public class BuildTowersGUI : MonoBehaviour {
                             {
                                 GameObject go = Network.Instantiate(towers[curBuildTowerId].towerPrefab.gameObject, hit.transform.gameObject.GetComponent<BuildZone>().buildPosition, Quaternion.identity, 6) as GameObject;
                                 Transform forProperties = go.transform.GetChild(1);
+                                forProperties.GetComponent<Tower>().myOwner.owner = Network.player;
 
                                 forProperties.GetComponent<Tower>().attackSpeed = towers[curBuildTowerId].attackSpeed;
                                 forProperties.GetComponent<Tower>().bullet = towers[curBuildTowerId].bullet;
@@ -82,6 +83,8 @@ public class BuildTowersGUI : MonoBehaviour {
                                 hit.transform.gameObject.GetComponent<BuildZone>().SetBuilded(true);
 
                                 myMoney -= towers[curBuildTowerId].towerCost;
+                                GameObject.FindGameObjectWithTag("Lobby").networkView.RPC("SetMoney", RPCMode.Server, new object[] { myMoney });
+                                
                             }
                         }
                         if (!isShiftPressed)

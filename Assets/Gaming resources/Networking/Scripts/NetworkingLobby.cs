@@ -41,7 +41,7 @@ public class NetworkingLobby : MonoBehaviour
         DontDestroyOnLoad(this);
         networkView.group = 1;
 
-        masterServerIP = "192.168.0.104";
+        masterServerIP = "192.168.0.102";
         MasterServer.ipAddress = masterServerIP;
 
         MasterServer.ClearHostList();
@@ -52,7 +52,6 @@ public class NetworkingLobby : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
         if (mainSong)
         {
             mainSongObject.audio.clip = mainSong;
@@ -86,8 +85,8 @@ public class NetworkingLobby : MonoBehaviour
             }
             showMasterServerIpConf = !showMasterServerIpConf;
         }
+        
     }
-
     void OnGUI()
     {
         if (!levelLoaded)
@@ -395,4 +394,16 @@ public class NetworkingLobby : MonoBehaviour
                 break;
         }
     }
+
+    [RPC]
+    void SetMoney(int money)
+    {
+        for (int i = 0; i < 4; i++)
+            if (Network.player == connectedPlayers[i].netPlayer)
+            {
+                connectedPlayers[i].money = money;
+                GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().myMoney = connectedPlayers[i].money;
+            }
+    }
+    
 }

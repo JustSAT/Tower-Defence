@@ -11,10 +11,8 @@ public class MeshDeformation : MonoBehaviour {
     private int[] newTriangles;
     private Transform myRaycastPoint;
     public bool doAlways = false;
-    public bool doOnce = false;
     void Start()
     {
-        doAlways = true;
         myRaycastPoint = GameObject.CreatePrimitive(PrimitiveType.Sphere).transform;
         myRaycastPoint.parent = transform;
         myRaycastPoint.transform.position = Vector3.zero;
@@ -30,18 +28,11 @@ public class MeshDeformation : MonoBehaviour {
         newTriangles = mesh.triangles;
 
         GetComponent<MeshFilter>().mesh = mesh;
-        if(!doAlways)
-            Calculate();
-        Invoke("SetDoOnce", 1);
-    }
-    void SetDoOnce()
-    {
-        doOnce = true;
     }
 	// Update is called once per frame
 	void Update () {
 
-        if (doAlways || doOnce)
+        if (doAlways)
         {
             Mesh mesh = new Mesh();
             mesh = GetComponent<MeshFilter>().mesh;
@@ -62,8 +53,6 @@ public class MeshDeformation : MonoBehaviour {
                 }
             }
             GetComponent<MeshFilter>().mesh = mesh;
-            if (doOnce)
-                doOnce = false;
         }
 	}
 

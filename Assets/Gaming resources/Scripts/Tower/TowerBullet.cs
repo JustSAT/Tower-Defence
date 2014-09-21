@@ -2,6 +2,15 @@
 using System.Collections;
 
 public class TowerBullet : MonoBehaviour {
+
+    //[System.Serializable]
+    public class Owner
+    {
+        public GameObject tower;
+        public int arrayId;
+    }
+
+    public Owner myOwner;
     public Transform target;
     private Vector3 lastPosition = Vector3.zero;
     public float bulletSpeed = 10.0f;
@@ -42,7 +51,7 @@ public class TowerBullet : MonoBehaviour {
             {
                 if (other.transform == target.transform)
                 {
-                    other.GetComponent<EnemyUnit>().ApplyDamage(damage);
+                    other.GetComponent<EnemyUnit>().ApplyDamage(damage, myOwner.tower, myOwner.arrayId);
                     ApplyDestroy();
                 }
             }
@@ -58,7 +67,7 @@ public class TowerBullet : MonoBehaviour {
 
         transform.GetChild(1).transform.gameObject.SetActive(false);
         transform.GetChild(2).transform.gameObject.SetActive(false);
-        Instantiate(particlePrefab, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation);
+        Network.Instantiate(particlePrefab, transform.GetChild(1).transform.position, transform.GetChild(1).transform.rotation,7);
         //First child its Particle System.
         transform.GetChild(0).GetComponent<ParticleSystem>().loop = false;
         transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().loop = false;
@@ -66,6 +75,13 @@ public class TowerBullet : MonoBehaviour {
     }
     void DestroyMe()
     {
-        Destroy(this.gameObject);
+        if (transform.GetComponent<NetworkView>())
+        {
+            Network.Destroy(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -30,6 +30,13 @@ public class BodysDestroyer : MonoBehaviour {
     IEnumerator DestroyMe()
     {
         yield return new WaitForSeconds(5.0f);
-        Destroy(this.gameObject);
+        if (transform.GetComponent<NetworkView>())
+        {
+            Network.Destroy(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

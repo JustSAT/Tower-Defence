@@ -20,6 +20,13 @@ public class DestroyByTime : MonoBehaviour {
     IEnumerator DestroyMe(float s)
     {
         yield return new WaitForSeconds(s);
-        Network.Destroy(this.gameObject);
+        if (transform.GetComponent<NetworkView>())
+        {
+            Network.Destroy(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

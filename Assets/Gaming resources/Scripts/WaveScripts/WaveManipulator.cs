@@ -84,13 +84,15 @@ public class WaveManipulator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if (Network.isServer)
         {
+            networkView.RPC("SyncData", RPCMode.Others, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
             if (timeToNextWave > 0.0f)
             {
                 guiText = "Часу до старту хвилі:";
                 timeToNextWave -= Time.deltaTime;
-                networkView.RPC("SyncData", RPCMode.AllBuffered, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
+                networkView.RPC("SyncData", RPCMode.Others, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
             }
             else if (timeToNextWave < 0.0f)
             {
@@ -98,7 +100,7 @@ public class WaveManipulator : MonoBehaviour {
                 guiText = "Хвиля вийшла!";
                 if (curWave < wavesCount)
                     StartWave();
-                networkView.RPC("SyncData", RPCMode.AllBuffered, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
+                networkView.RPC("SyncData", RPCMode.Others, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
             }
         }
 	}
@@ -168,12 +170,14 @@ public class WaveManipulator : MonoBehaviour {
         }
     }
     [RPC]
-    void SyncData(float timeToNextWave, int curWave, string guiText)
+    void SyncData(float time, int wave, string text)
     {
-        
-        this.timeToNextWave = timeToNextWave;
-        this.curWave = byte.Parse(curWave.ToString());
-        this.guiText = guiText;
+        if (Network.isClient)
+        {
+            timeToNextWave = time;
+            curWave = byte.Parse(wave.ToString());
+            guiText = text;
+        }
 
     }
 
