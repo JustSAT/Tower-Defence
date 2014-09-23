@@ -83,11 +83,8 @@ public class EnemyUnit : MonoBehaviour {
         GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().wavesEnemies[enemyId].enemiesOnScene--;
         GameObject.FindGameObjectWithTag("Start").GetComponent<WaveManipulator>().CheckWavesEnd();
 
-        if (Network.isServer)
-        {
-            GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>().connectedPlayers[killerId].money += enemyCost;
-            GameObject.FindGameObjectWithTag("Lobby").networkView.RPC("SetMoney", GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>().connectedPlayers[killerId].netPlayer, new object[] { GameObject.FindGameObjectWithTag("Lobby").GetComponent<NetworkingLobby>().connectedPlayers[killerId].money });
-        }
+
+        GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().myMoney += enemyCost;
 
         Network.Destroy(this.gameObject);
     }

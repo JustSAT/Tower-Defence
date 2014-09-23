@@ -87,7 +87,6 @@ public class WaveManipulator : MonoBehaviour {
 
         if (Network.isServer)
         {
-            networkView.RPC("SyncData", RPCMode.Others, new object[] { timeToNextWave, int.Parse(curWave.ToString()), guiText });
             if (timeToNextWave > 0.0f)
             {
                 guiText = "Часу до старту хвилі:";

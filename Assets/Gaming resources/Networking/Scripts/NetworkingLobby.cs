@@ -396,10 +396,10 @@ public class NetworkingLobby : MonoBehaviour
     }
 
     [RPC]
-    void SetMoney(int money)
+    void SetMoney(int money, NetworkPlayer player)
     {
         for (int i = 0; i < 4; i++)
-            if (Network.player == connectedPlayers[i].netPlayer)
+            if (player == connectedPlayers[i].netPlayer)
             {
                 connectedPlayers[i].money = money;
                 GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().myMoney = connectedPlayers[i].money;

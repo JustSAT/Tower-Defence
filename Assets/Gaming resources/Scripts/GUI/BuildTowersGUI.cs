@@ -83,7 +83,7 @@ public class BuildTowersGUI : MonoBehaviour {
                                 hit.transform.gameObject.GetComponent<BuildZone>().SetBuilded(true);
 
                                 myMoney -= towers[curBuildTowerId].towerCost;
-                                GameObject.FindGameObjectWithTag("Lobby").networkView.RPC("SetMoney", RPCMode.Server, new object[] { myMoney });
+                                //GameObject.FindGameObjectWithTag("Lobby").networkView.RPC("SetMoney", RPCMode.Server, new object[] { myMoney, Network.player });
                                 
                             }
                         }
