@@ -30,6 +30,7 @@ public class IsSelectObject : MonoBehaviour
         {
             selObj.SetActive(true);
             selObj.GetComponent<Animation>().Play("selAnim");
+
         }
         else
         {

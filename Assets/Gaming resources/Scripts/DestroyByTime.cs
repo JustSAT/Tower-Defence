@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DestroyByTime : MonoBehaviour {
-
+    public float seconds = 2.0f;
 	// Use this for initialization
     void DestroyTime(float time)
     {
@@ -10,7 +10,7 @@ public class DestroyByTime : MonoBehaviour {
     }
     void Start()
     {
-        StartCoroutine(DestroyMe(2));
+        StartCoroutine(DestroyMe(seconds));
     }
 	
 	// Update is called once per frame
@@ -22,7 +22,13 @@ public class DestroyByTime : MonoBehaviour {
         yield return new WaitForSeconds(s);
         if (transform.GetComponent<NetworkView>())
         {
-            Network.Destroy(this.gameObject);
+            if(transform.animation)
+                if(transform.animation.isPlaying)
+                    StartCoroutine(DestroyMe(2));
+                else
+                    Network.Destroy(this.gameObject);
+            else
+                Network.Destroy(this.gameObject);
         }
         else
         {

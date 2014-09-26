@@ -51,7 +51,8 @@ public class TowerBullet : MonoBehaviour {
             {
                 if (other.transform == target.transform)
                 {
-                    other.GetComponent<EnemyUnit>().ApplyDamage(damage, myOwner.tower, myOwner.arrayId);
+                    if(Network.isServer)
+                        other.GetComponent<EnemyUnit>().ApplyDamage(damage, myOwner.tower, myOwner.arrayId);
                     ApplyDestroy();
                 }
             }
@@ -71,7 +72,8 @@ public class TowerBullet : MonoBehaviour {
         //First child its Particle System.
         transform.GetChild(0).GetComponent<ParticleSystem>().loop = false;
         transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().loop = false;
-        Invoke("DestroyMe", 3);
+        if(Network.isServer)
+            Invoke("DestroyMe", 3);
     }
     void DestroyMe()
     {

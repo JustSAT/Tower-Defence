@@ -17,6 +17,8 @@ public class EnemyUnit : MonoBehaviour {
     public Transform destroyedBody;
     public Transform plusScore;
 
+    public string deathAnimation;
+
     public float explosionForce = 10000.0f;
     private bool startDeath = false;
 	// Use this for initialization
@@ -47,24 +49,32 @@ public class EnemyUnit : MonoBehaviour {
 
     void KillEnemy(int killerId)
     {
+        //Убиваю юнита
         curHealth = 0;
         startDeath = true;
 
+        //создаю частицы смерти и убитое тело если они существуют
         Transform particle = null;
         if(destroyParticle)
             particle = Network.Instantiate(destroyParticle, transform.position, Quaternion.identity,5) as Transform;
 
         Transform go = null;
-        if(destroyedBody)
-            go = Network.Instantiate(destroyedBody, transform.position, Quaternion.identity,5) as Transform;
+        if (destroyedBody)
+        {
+            go = Network.Instantiate(destroyedBody, transform.position, transform.rotation, 5) as Transform;
+            if(go.animation)
+                go.animation.Play(deathAnimation);
+        }
 
+        //отключаю скрипт движения
         if(transform.GetComponent<MineBotAI>())
             transform.GetComponent<MineBotAI>().enabled = false;
         else
             transform.GetComponent<BotAI>().enabled = false;
-        transform.GetChild(0).gameObject.SetActive(false);
+        //transform.GetChild(0).gameObject.SetActive(false);
 
-        if (particle != null)
+        //Создаю удар для разрушенного тела
+        if (go != null)
         {
             Vector3 explosionPos = particle.position + new Vector3(Random.RandomRange(-2.0f,2.0f), Random.RandomRange(-2.0f,2.0f), Random.RandomRange(-2.0f,2.0f));
             Collider[] colliders = Physics.OverlapSphere(explosionPos, 20);
@@ -77,6 +87,8 @@ public class EnemyUnit : MonoBehaviour {
 
             }
         }
+
+        //Херня показывающая сколько денег получил игрок
         Transform plusScoreInst = Instantiate(plusScore, transform.position, Quaternion.identity) as Transform;
         plusScoreInst.GetComponent<plusAnimation>().text = enemyCost.ToString();
 
@@ -86,19 +98,15 @@ public class EnemyUnit : MonoBehaviour {
 
         GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().myMoney += enemyCost;
 
+        DestroyMe();
+    }
+    void DestroyMe()
+    {
         Network.Destroy(this.gameObject);
     }
     void OnTriggerEnter(Collider other)
     {
         
-        /*if (other.tag == "TowerBullet")
-        {
-            print("Opa " + other.tag);
-            if (other.GetComponent<TowerBullet>().target == this.transform)
-            {
-                Destroy(other.gameObject);
-            }
-        }*/
     }
     void OnGUI()
     {

@@ -24,7 +24,7 @@ public class BuildTowersGUI : MonoBehaviour {
     private bool isShiftPressed = false;
 
     public int myMoney = 100;
-    private int maxLevelHealth = 100;
+    private int maxLevelHealth = 5;
     public int curLevelHealth = 100;
 
     public GUIStyle informationStyle;

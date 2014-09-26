@@ -62,6 +62,7 @@ public class Tower : MonoBehaviour {
    void Update()
    {
        if (!tryShoot)
+       {
            if (currentCooldown > 0.0f)
            {
                currentCooldown -= Time.deltaTime;
@@ -70,10 +71,13 @@ public class Tower : MonoBehaviour {
            {
                currentCooldown = 0;
            }
-           else if (currentCooldown == 0){
+           else if (currentCooldown == 0)
+           {
                if (target != null)
                    Shoot();
            }
+           
+       }
 
        /*
        if (target != null)
@@ -119,6 +123,9 @@ public class Tower : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (damageRangeBacklight)
+            damageRangeBacklight.localScale = new Vector3(0.42f * damageRange, 0, 0.42f * damageRange);
+        transform.GetComponent<SphereCollider>().radius = damageRange;
         if (other.tag == "Enemy" && target != null)
         {
             targetMaybeNext.Add(other.transform);
