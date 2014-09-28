@@ -25,7 +25,7 @@ Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.
 Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
 Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll (this message is harmless)
 Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll into Unity Child Domain
-- Completed reload, in  0.048 seconds
+- Completed reload, in  0.047 seconds
 desktop: 1280x1024 60Hz; virtual: 1280x1024 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -46,12 +46,12 @@ The tree Nobiax_rock5 must use the Nature/Soft Occlusion shader. Otherwise billb
  
 (Filename:  Line: 80)
 
-UnloadTime: 0.419543 ms
+UnloadTime: 0.445669 ms
 Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\System.Core.dll (this message is harmless)
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 31344.
-Total: 6.125209 ms (FindLiveObjects: 1.024755 ms CreateObjectMapping: 0.367916 ms MarkObjects: 3.887541 ms  DeleteObjects: 0.272127 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 29706.
+Total: 4.478772 ms (FindLiveObjects: 0.974687 ms CreateObjectMapping: 0.143683 ms MarkObjects: 2.440761 ms  DeleteObjects: 0.272439 ms)
 
 Failed to connect to master server at 192.168.0.102:23466
  
