@@ -25,7 +25,7 @@ Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.
 Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\Ionic.Zip.Reduced.dll into Unity Child Domain
 Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll (this message is harmless)
 Loading E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\JsonFx.Json.dll into Unity Child Domain
-- Completed reload, in  0.047 seconds
+- Completed reload, in  0.169 seconds
 desktop: 1280x1024 60Hz; virtual: 1280x1024 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -46,46 +46,18 @@ The tree Nobiax_rock5 must use the Nature/Soft Occlusion shader. Otherwise billb
  
 (Filename:  Line: 80)
 
-UnloadTime: 0.445669 ms
+UnloadTime: 33.011547 ms
 Platform assembly: E:\Develop\Gamedev\Tower Defence\Build\TD_Data\Managed\System.Core.dll (this message is harmless)
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 29706.
-Total: 4.478772 ms (FindLiveObjects: 0.974687 ms CreateObjectMapping: 0.143683 ms MarkObjects: 2.440761 ms  DeleteObjects: 0.272439 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 29857.
+Total: 4.453581 ms (FindLiveObjects: 0.959137 ms CreateObjectMapping: 0.138396 ms MarkObjects: 2.432364 ms  DeleteObjects: 0.263109 ms)
 
 Failed to connect to master server at 192.168.0.102:23466
  
 (Filename:  Line: 231)
 
 Could not connect to master server: ConnectionFailed. MasterServerIP: 192.168.0.102
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Wave[1] was ended. Last enemy is dead.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Wave[2] was ended. Last enemy is dead.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Wave[3] was ended. Last enemy is dead.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Wave[4] was ended. Last enemy is dead.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Wave[5] was ended. Last enemy is dead.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Wave[6] was ended. Last enemy is dead.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Wave[7] was ended. Last enemy is dead.
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 

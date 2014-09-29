@@ -62,10 +62,10 @@ public class HUD : MonoBehaviour {
     }
     void OnMouseEnter()
     {
-        GameObject.FindGameObjectWithTag("CameraParent").GetComponent<UnitSelection>().cursorOnGUI = true;
+        //GameObject.FindGameObjectWithTag("CameraParent").GetComponent<UnitSelection>().cursorOnGUI = true;
     }
     void OnMouseExit()
     {
-        GameObject.FindGameObjectWithTag("CameraParent").GetComponent<UnitSelection>().cursorOnGUI = false;
+        //GameObject.FindGameObjectWithTag("CameraParent").GetComponent<UnitSelection>().cursorOnGUI = false;
     }
 }

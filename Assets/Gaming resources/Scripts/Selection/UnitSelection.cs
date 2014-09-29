@@ -45,9 +45,17 @@ public class UnitSelection : MonoBehaviour {
 
     void Update()
     {
-        if (BTGUI.buildStatus == false)
+        if (Input.mousePosition.y < 200)
         {
-
+            cursorOnGUI = true;
+        }
+        else
+        {
+            cursorOnGUI = false;
+        }
+        if (BTGUI.buildStatus == false && !cursorOnGUI)
+        {
+            
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (!cursorOnGUI && !missing)
@@ -233,6 +241,11 @@ public class UnitSelection : MonoBehaviour {
             unit.GetComponent<IsSelectObject>().SetAndPlay();
             selectedUnits.Add(unit);
         }
+        if (unit.tag == "Unit" || unit.tag == "Tower")
+        {
+            if(unit.transform.GetChild(1).GetComponent<Tower>().canUpgrade)
+                BTGUI.showUpgradeButton = true;
+        }
     }
     public void ClearSelList()
     {
@@ -241,9 +254,14 @@ public class UnitSelection : MonoBehaviour {
             unit.GetComponent<IsSelectObject>().isSelect = false;
             unit.GetComponent<IsSelectObject>().SetAndPlay();
         }
+
+        
+        BTGUI.Invoke("SwitchShowUpgradeButton", 0.1f);
+
         selectedUnits.Clear();
         isAnySelect = false;
     }
+
     void SelectEnemy(GameObject enemy)
     {
         isEnemySelect = true;
@@ -263,5 +281,21 @@ public class UnitSelection : MonoBehaviour {
             selectedEnemy.GetComponent<IsSelectObject>().SetAndPlay();
         }
         isAnySelect = false;
+    }
+    public void UpgradeSelectedTowers()
+    {
+        Debug.Log("start upgrade");
+        if (selectedUnits.Count > 0)
+        {
+            Debug.Log(selectedUnits.Count);
+            for (int i = 0; i < selectedUnits.Count; i++)
+            {
+                if (selectedUnits[0].transform.GetChild(1).GetComponent<Tower>().towerName == selectedUnits[i].transform.GetChild(1).GetComponent<Tower>().towerName)
+                {
+                    Debug.Log("oppa");
+                    selectedUnits[i].transform.GetChild(1).GetComponent<Tower>().UpgradeMe();
+                }
+            }            
+        }
     }
 }

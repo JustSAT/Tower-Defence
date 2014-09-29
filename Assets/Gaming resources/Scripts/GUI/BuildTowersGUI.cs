@@ -13,8 +13,10 @@ public class TowerProperty
     public float bulletSpeed = 100.0f;
     public float rotationSpeed = 10.0f;
     public int towerCost = 30;
+    public int upgradeCost = 75;
     public Transform bullet;
-
+    public bool canUpgrade;
+    public GameObject upgradeTower;
 }
 
 public class BuildTowersGUI : MonoBehaviour {
@@ -37,6 +39,10 @@ public class BuildTowersGUI : MonoBehaviour {
     public byte curBuildTowerId = 0;
 
     private Transform startWaveObject;
+
+    public bool showUpgradeButton = false;
+
+    string hover = "";
 	// Use this for initialization
 	void Start () {
         curLevelHealth = maxLevelHealth;
@@ -78,11 +84,15 @@ public class BuildTowersGUI : MonoBehaviour {
                                 forProperties.GetComponent<Tower>().damage = towers[curBuildTowerId].damage;
                                 forProperties.GetComponent<Tower>().damageRange = towers[curBuildTowerId].damageRange;
                                 forProperties.GetComponent<Tower>().rotationSpeed = towers[curBuildTowerId].rotationSpeed;
+                                forProperties.GetComponent<Tower>().canUpgrade = towers[curBuildTowerId].canUpgrade;
+                                forProperties.GetComponent<Tower>().upgradeTower = towers[curBuildTowerId].upgradeTower;
+                                forProperties.GetComponent<Tower>().towerCost = towers[curBuildTowerId].towerCost;
+                                forProperties.GetComponent<Tower>().upgradeCost = towers[curBuildTowerId].upgradeCost;
 
                                 hit.transform.gameObject.GetComponent<BuildZone>().structure = go.transform;
                                 hit.transform.gameObject.GetComponent<BuildZone>().SetBuilded(true);
 
-                                myMoney -= towers[curBuildTowerId].towerCost;
+                                
                                 //GameObject.FindGameObjectWithTag("Lobby").networkView.RPC("SetMoney", RPCMode.Server, new object[] { myMoney, Network.player });
                                 
                             }
@@ -114,6 +124,7 @@ public class BuildTowersGUI : MonoBehaviour {
 	}
     void OnGUI()
     {
+        hover = GUI.tooltip;
         if (GUI.Button(new Rect(310, Screen.height - 12 - 64, 64, 64), towers[0].towerButtonTexture, towerButtonStyle) && !buildStatus)
         {
             if (myMoney >= towers[0].towerCost)
@@ -121,6 +132,12 @@ public class BuildTowersGUI : MonoBehaviour {
                 StartCoroutine(SetBuildStatus());
             }
             
+        }
+        if (showUpgradeButton)
+        if(GUI.Button(new Rect(400, Screen.height - 12 - 64, 64, 64), new GUIContent(towers[0].towerButtonTexture, "over") , towerButtonStyle) && !buildStatus)
+        {
+            Debug.Log("button pressed");
+            transform.GetComponent<UnitSelection>().UpgradeSelectedTowers();
         }
         if (startWaveObject)
         {
@@ -155,6 +172,11 @@ public class BuildTowersGUI : MonoBehaviour {
         CutoutBacklight();
     }
 
+    public void ChangeMoney(int iValue)
+    {
+        myMoney += iValue;
+    }
+
     //Рубильник который будет отвечает за включение или отключение подсветки хайграундов на которых можно строить
     void CutoutBacklight()
     {
@@ -164,5 +186,9 @@ public class BuildTowersGUI : MonoBehaviour {
             bl.GetComponent<BuildZone>().backlight.gameObject.SetActive(buildStatus);
             //bl.GetComponent<BuildZone>().backlight.GetComponent<MeshDeformation>().Invoke("Calculate", 0.5f);
         }
+    }
+    public void SwitchShowUpgradeButton()
+    {
+        showUpgradeButton = !showUpgradeButton;
     }
 }

@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour {
     }
 
     public Owner myOwner;
+    public string towerName = "tower";
     public int kills = 0;
 
     public float damageRange = 15.0f;
@@ -31,9 +32,20 @@ public class Tower : MonoBehaviour {
     public Transform damageRangeBacklight;
 
     public List<Transform> targetMaybeNext;
+
+    public bool canUpgrade = false;
+    public bool isUpgraded = false;
+    public GameObject upgradeTower;
+
+    public int towerCost = 50;
+    public int upgradeCost = 75;
 	// Use this for initialization
 	void Start () {
-        
+        if (isUpgraded)
+        {
+            towerCost = upgradeCost;
+        }
+        GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().ChangeMoney(-towerCost);
         if (Network.isServer)
         {
             myOwner = new Owner();
@@ -53,7 +65,8 @@ public class Tower : MonoBehaviour {
             transform.GetComponent<SphereCollider>().radius = damageRange;
 
             if (damageRangeBacklight)
-                damageRangeBacklight.localScale = new Vector3(0.42f * damageRange, 0, 0.42f * damageRange);
+                damageRangeBacklight.GetComponent<Projector>().orthographicSize = transform.localScale.x * damageRange + 1;
+                //damageRangeBacklight.localScale = new Vector3(0.42f * damageRange, 0, 0.42f * damageRange);
         }
 	}
    public bool tryShoot = false;
@@ -124,7 +137,8 @@ public class Tower : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (damageRangeBacklight)
-            damageRangeBacklight.localScale = new Vector3(0.42f * damageRange, 0, 0.42f * damageRange);
+            damageRangeBacklight.GetComponent<Projector>().orthographicSize = transform.localScale.x * damageRange + 1;
+            //damageRangeBacklight.localScale = new Vector3(0.42f * damageRange, 0, 0.42f * damageRange);
         transform.GetComponent<SphereCollider>().radius = damageRange;
         if (other.tag == "Enemy" && target != null)
         {
@@ -162,5 +176,16 @@ public class Tower : MonoBehaviour {
         
     }
 
+    public void UpgradeMe()
+    {
+        if (GameObject.FindGameObjectWithTag("CameraParent").GetComponent<BuildTowersGUI>().myMoney >= upgradeCost)
+        {
+            Network.Instantiate(upgradeTower, transform.position, transform.rotation, 6);
+            if (transform.networkView)
+                Network.Destroy(this.gameObject);
+            else
+                Destroy(this.gameObject);
+        }
+    }
 
 }
