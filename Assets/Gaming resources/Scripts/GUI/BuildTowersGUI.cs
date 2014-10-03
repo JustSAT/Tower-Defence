@@ -40,7 +40,7 @@ public class BuildTowersGUI : MonoBehaviour {
 
     private Transform startWaveObject;
 
-    public bool showUpgradeButton = false;
+    //public bool showUpgradeButton = false;
 
     string hover = "";
 	// Use this for initialization
@@ -133,11 +133,15 @@ public class BuildTowersGUI : MonoBehaviour {
             }
             
         }
-        if (showUpgradeButton)
-        if(GUI.Button(new Rect(400, Screen.height - 12 - 64, 64, 64), new GUIContent(towers[0].towerButtonTexture, "over") , towerButtonStyle) && !buildStatus)
+        if (transform.GetComponent<UnitSelection>().isAnySelect)
         {
-            Debug.Log("button pressed");
-            transform.GetComponent<UnitSelection>().UpgradeSelectedTowers();
+            Debug.Log(transform.GetComponent<UnitSelection>().selectedUnits[0].transform.GetChild(1).name);
+            if (transform.GetComponent<UnitSelection>().selectedUnits[0].transform.GetChild(1).GetComponent<Tower>())
+            if(transform.GetComponent<UnitSelection>().selectedUnits[0].transform.GetChild(1).GetComponent<Tower>().canUpgrade)
+                if (GUI.Button(new Rect(400, Screen.height - 12 - 64, 64, 64), new GUIContent(transform.GetComponent<UnitSelection>().selectedUnits[0].transform.GetChild(1).GetComponent<Tower>().upgradeTowerButtonIcon, "over"), towerButtonStyle) && !buildStatus)
+            {
+                UpgradeSelectedTowers();
+            }
         }
         if (startWaveObject)
         {
@@ -187,8 +191,20 @@ public class BuildTowersGUI : MonoBehaviour {
             //bl.GetComponent<BuildZone>().backlight.GetComponent<MeshDeformation>().Invoke("Calculate", 0.5f);
         }
     }
-    public void SwitchShowUpgradeButton()
+
+    void UpgradeSelectedTowers()
     {
-        showUpgradeButton = !showUpgradeButton;
+        UnitSelection unitSelectionScript = transform.GetComponent<UnitSelection>();
+        if (unitSelectionScript.selectedUnits.Count > 0)
+        {
+            string tn = unitSelectionScript.selectedUnits[0].transform.GetChild(1).GetComponent<Tower>().towerName;
+            for (int i = 0; i < unitSelectionScript.selectedUnits.Count; i++)
+            {
+                if (tn == unitSelectionScript.selectedUnits[i].transform.GetChild(1).GetComponent<Tower>().towerName)
+                {
+                    unitSelectionScript.selectedUnits[i].transform.GetChild(1).GetComponent<Tower>().UpgradeMe();
+                }
+            }
+        }
     }
 }

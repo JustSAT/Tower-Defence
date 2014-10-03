@@ -37,8 +37,13 @@ public class Tower : MonoBehaviour {
     public bool isUpgraded = false;
     public GameObject upgradeTower;
 
+    public Texture2D upgradeTowerButtonIcon;
+
     public int towerCost = 50;
     public int upgradeCost = 75;
+
+    public AudioClip towerShootAudio;
+
 	// Use this for initialization
 	void Start () {
         if (isUpgraded)
@@ -117,9 +122,13 @@ public class Tower : MonoBehaviour {
         tryShoot = true;
         if (target != null && Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(target.position.x, target.position.z)) / ((transform.localScale.x + transform.localScale.z) / 2) <= damageRange)
         {
-            
+
             if (bullet != null)
             {
+
+                audio.clip = towerShootAudio;
+                audio.Play();
+
                 GameObject bul = Instantiate(bullet.gameObject, bulletSpawnPosition.position, Quaternion.identity) as GameObject;
                 bul.GetComponent<TowerBullet>().target = target;
                 bul.GetComponent<TowerBullet>().myOwner = new TowerBullet.Owner();
@@ -182,9 +191,9 @@ public class Tower : MonoBehaviour {
         {
             Network.Instantiate(upgradeTower, transform.position, transform.rotation, 6);
             if (transform.networkView)
-                Network.Destroy(this.gameObject);
+                Network.Destroy(this.transform.parent.gameObject);
             else
-                Destroy(this.gameObject);
+                Destroy(this.transform.parent.gameObject);
         }
     }
 

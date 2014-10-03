@@ -5,11 +5,11 @@ public class BuildZone : MonoBehaviour {
     public Transform structure;
     public Transform backlight;
     public bool isBuilded = false;
-    public float transparent = 0.7f;
+    private float transparent = 1.0f;
     public Vector3 buildPosition;
 	// Use this for initialization
 	void Start () {
-        
+        backlight = transform.GetChild(0);
         buildPosition = transform.position + new Vector3(0, transform.localScale.y / 2, 0);
         RaycastHit hit;
         int layerMask = 1 << 8;
@@ -18,7 +18,7 @@ public class BuildZone : MonoBehaviour {
             buildPosition = hit.point;
         }
         backlight.transform.position = buildPosition + new Vector3(0, 0.4f, 0);
-        Invoke("DisableBacklight", 2);
+        Invoke("DisableBacklight", .1f);
         SetBuilded(false);
 	}
 	
@@ -42,9 +42,12 @@ public class BuildZone : MonoBehaviour {
         if (backlight.gameObject.active && !isBuilded)
         {
             Color color = Color.yellow;
-            color.a = transparent;
+            /*color.a = transparent;
             backlight.renderer.material.color = color;
-
+            */
+            Material mat = new Material(backlight.GetComponent<Projector>().material);
+            mat.color = color;
+            backlight.GetComponent<Projector>().material = mat;
             isYellowed = true;
         }
     }
@@ -55,15 +58,18 @@ public class BuildZone : MonoBehaviour {
             if (!isBuilded)
             {
                 Color color = Color.green;
-                color.a = transparent;
-
-                backlight.renderer.material.color = color;
+                //color.a = transparent;
+                Material mat = new Material(backlight.GetComponent<Projector>().material);
+                mat.color = color;
+                backlight.GetComponent<Projector>().material = mat;
             }
             else
             {
                 Color color = Color.red;
-                color.a = transparent;
-                backlight.renderer.material.color = color;
+                //color.a = transparent;
+                Material mat = new Material(backlight.GetComponent<Projector>().material);
+                mat.color = color;
+                backlight.GetComponent<Projector>().material = mat;
             }
             isYellowed = false;
         }
@@ -75,14 +81,18 @@ public class BuildZone : MonoBehaviour {
         if (status)
         {
             Color color = Color.red;
-            color.a = transparent;
-            backlight.renderer.material.color = color;
+            //color.a = transparent;
+            Material mat = new Material(backlight.GetComponent<Projector>().material);
+            mat.color = color;
+            backlight.GetComponent<Projector>().material = mat;
         }
         else
         {
             Color color = Color.green;
-            color.a = transparent;
-            backlight.renderer.material.color = color;
+            //color.a = transparent;
+            Material mat = new Material(backlight.GetComponent<Projector>().material);
+            mat.color = color;
+            backlight.GetComponent<Projector>().material = mat;
         }
     }
     

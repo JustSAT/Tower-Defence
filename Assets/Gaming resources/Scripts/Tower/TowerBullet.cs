@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TowerBullet : MonoBehaviour {
 
@@ -16,6 +17,9 @@ public class TowerBullet : MonoBehaviour {
     public float bulletSpeed = 10.0f;
     public float damage = 10.0f;
     public Transform particlePrefab;
+
+    public List<AudioClip> hitAudioClips;
+
     private bool destroyApllyed = false;
 	// Use this for initialization
 	void Start () {
@@ -62,6 +66,8 @@ public class TowerBullet : MonoBehaviour {
     void ApplyDestroy()
     {
         destroyApllyed = true;
+        audio.clip = hitAudioClips[Random.Range(0, 4)];
+        audio.Play();
         transform.GetComponent<SphereCollider>().enabled = false;
         //transform.parent = target;
         //Second child its our bullet model

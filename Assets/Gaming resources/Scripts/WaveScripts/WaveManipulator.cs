@@ -61,7 +61,7 @@ public class WaveManipulator : MonoBehaviour {
 
     public float timeToNextWave = 30.0f;
 
-    public string guiText = "Time to start Wave:";
+    public string guiText = "Часу до старту хвилі:";
 
     public int startMoney = 100;
     private int curBotSpawned = 0;

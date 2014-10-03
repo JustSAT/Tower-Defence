@@ -13,7 +13,9 @@ public class HUD : MonoBehaviour {
     };
     public Texture texture;
 
+
     public HUDType myHudType;
+
 	// Use this for initialization
 	void Start () {
         

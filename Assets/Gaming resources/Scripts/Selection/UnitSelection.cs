@@ -241,11 +241,6 @@ public class UnitSelection : MonoBehaviour {
             unit.GetComponent<IsSelectObject>().SetAndPlay();
             selectedUnits.Add(unit);
         }
-        if (unit.tag == "Unit" || unit.tag == "Tower")
-        {
-            if(unit.transform.GetChild(1).GetComponent<Tower>().canUpgrade)
-                BTGUI.showUpgradeButton = true;
-        }
     }
     public void ClearSelList()
     {
@@ -254,9 +249,6 @@ public class UnitSelection : MonoBehaviour {
             unit.GetComponent<IsSelectObject>().isSelect = false;
             unit.GetComponent<IsSelectObject>().SetAndPlay();
         }
-
-        
-        BTGUI.Invoke("SwitchShowUpgradeButton", 0.1f);
 
         selectedUnits.Clear();
         isAnySelect = false;
@@ -282,20 +274,5 @@ public class UnitSelection : MonoBehaviour {
         }
         isAnySelect = false;
     }
-    public void UpgradeSelectedTowers()
-    {
-        Debug.Log("start upgrade");
-        if (selectedUnits.Count > 0)
-        {
-            Debug.Log(selectedUnits.Count);
-            for (int i = 0; i < selectedUnits.Count; i++)
-            {
-                if (selectedUnits[0].transform.GetChild(1).GetComponent<Tower>().towerName == selectedUnits[i].transform.GetChild(1).GetComponent<Tower>().towerName)
-                {
-                    Debug.Log("oppa");
-                    selectedUnits[i].transform.GetChild(1).GetComponent<Tower>().UpgradeMe();
-                }
-            }            
-        }
-    }
+    
 }

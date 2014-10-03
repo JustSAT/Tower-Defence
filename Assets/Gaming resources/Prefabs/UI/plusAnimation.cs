@@ -7,14 +7,13 @@ public class plusAnimation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	    GetComponent<TextMesh>().text = "+" + text;
-        audio.Play();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (yellow.a > 0)
         {
-            yellow.a -= 0.005f;
+            yellow.a -= 0.009f;
         }
         else if (yellow.a < 0)
             yellow.a = 0;
